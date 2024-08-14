@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-data = pd.read_csv('ml/dataset.csv')
+data = pd.read_csv('dataset.csv')
 
 le_team1 = LabelEncoder()
 le_team2 = LabelEncoder()
@@ -60,6 +60,7 @@ def prediction(team1, team2, goals_team1, goals_team2):
 @app.route('/bet', methods=['POST'])
 def bet():
     data = request.get_json()
+    print(data)
     team1 = data['team1']
     team2 = data['team2']
     goals_team1 = data['goals_team1']
